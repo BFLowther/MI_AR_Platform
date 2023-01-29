@@ -1,0 +1,3 @@
+[submodule "Assets/SuperPupUtilities"]
+	path = Assets/SuperPupUtilities
+	url = https://github.com/EricWRogers/SPSUnityUtilities.git
