@@ -13,7 +13,10 @@ public class QRScanner : MonoBehaviour
     void Start()
     {
         var renderer = GetComponent<RawImage>();
-        webcamTexture = new WebCamTexture(Screen.width, Screen.height);
+        int max = Mathf.Max(Screen.width, Screen.height);
+        var rect = GetComponent<RectTransform>();
+        rect.sizeDelta = new Vector2(max,max);
+        webcamTexture = new WebCamTexture(max, max);
         renderer.texture = webcamTexture;
         //renderer.material.mainTexture = webcamTexture;
         StartCoroutine(GetQRCode());
@@ -35,7 +38,11 @@ public class QRScanner : MonoBehaviour
                     QrCode = Result.Text;
                     if (!string.IsNullOrEmpty(QrCode))
                     {
+                        UnlockManager.Instance.todaysUnlocks.Add(QrCode);
                         Debug.Log("DECODED TEXT FROM QR: " + QrCode);
+                        // Melisa add scene change here
+
+                        ///////////////////////////////
                         break;
                     }
                 }
