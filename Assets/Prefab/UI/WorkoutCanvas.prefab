@@ -1363,7 +1363,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1570,6 +1570,7 @@ GameObject:
   - component: {fileID: 2223244696761411962}
   - component: {fileID: 4577517809325771669}
   - component: {fileID: 3141544729598003641}
+  - component: {fileID: 2548189969406886557}
   m_Layer: 5
   m_Name: Exercise
   m_TagString: Untagged
@@ -1636,6 +1637,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2548189969406886557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6483837888145445759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02e8b6ca13874fd785fdc6ee93e9515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExerciseName: Exercise #1
+  isDoneToggle: {fileID: 7070032363237250966}
 --- !u!1 &6955783647468825777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1757,7 +1772,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3992858029784599048}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7070606918824879937}
+        m_TargetAssemblyTypeName: WorkoutUI, Assembly-CSharp
+        m_MethodName: QRScanner
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7070606918402217875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,6 +1876,7 @@ GameObject:
   - component: {fileID: 7070606918656317343}
   - component: {fileID: 7070606918656317342}
   - component: {fileID: 7070606918656317345}
+  - component: {fileID: 7070606918824879937}
   m_Layer: 5
   m_Name: WorkoutCanvas
   m_TagString: Untagged
@@ -1938,6 +1966,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7070606918824879937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7070606918656317344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cf5ac14027ce4a929760e4e985bd722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exerciseItems:
+  - {fileID: 2548189969406886557}
 --- !u!1 &7070606919027044109
 GameObject:
   m_ObjectHideFlags: 0

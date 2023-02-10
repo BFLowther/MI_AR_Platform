@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using ZXing;
+using UnityEngine.SceneManagement;
 
 public class QRScanner : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class QRScanner : MonoBehaviour
                         Debug.Log("DECODED TEXT FROM QR: " + QrCode);
                         // Melisa add scene change here
 
+                        SceneManager.LoadScene("Workout");
                         ///////////////////////////////
                         break;
                     }
