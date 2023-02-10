@@ -9,5 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenuUITest.unity
     guid: 5d1c5e7b33ea2405da9844a564e4a6a3
   m_configObjects:
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 274f6c2272a5e0c4abcfd2d7a0113455, type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 729e38f230442b94ab43a79170f2b20f, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 76d32c9e43a647c438b15789fa73990a, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: f163d9c797e5b5249b16326c148f8535, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 1def097063ef92c4588167f7e07f7f8a, type: 2}
