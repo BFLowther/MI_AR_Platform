@@ -13,7 +13,7 @@ public class QRScanner : MonoBehaviour
     void Start()
     {
         var renderer = GetComponent<RawImage>();
-        webcamTexture = new WebCamTexture(512, 512);
+        webcamTexture = new WebCamTexture(Screen.width, Screen.height);
         renderer.texture = webcamTexture;
         //renderer.material.mainTexture = webcamTexture;
         StartCoroutine(GetQRCode());
