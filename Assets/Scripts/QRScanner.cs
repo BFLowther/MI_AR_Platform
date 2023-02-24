@@ -27,7 +27,7 @@ public class QRScanner : MonoBehaviour
 
         PlayerPrefs.SetString("default_camera", webcamTexture.deviceName);
 
-        Debug.Log(webcamTexture.name);
+        Debug.Log(webcamTexture.deviceName);
         Debug.Log("Number of cameras: " + WebCamTexture.devices.Length);
         renderer.texture = webcamTexture;
         webcamTexture.filterMode = FilterMode.Trilinear;
@@ -77,6 +77,7 @@ public class QRScanner : MonoBehaviour
         int index = 0;
         for(int i = 0; i < WebCamTexture.devices.Length; i++)
         {
+            Debug.Log(i + " : " + webcamTexture.deviceName);
             if (WebCamTexture.devices[i].name == webcamTexture.deviceName)
             {
                 index = i;
@@ -90,6 +91,7 @@ public class QRScanner : MonoBehaviour
 
         webcamTexture.deviceName = WebCamTexture.devices[index].name;
         PlayerPrefs.SetString("default_camera", webcamTexture.deviceName);
+        Debug.Log(webcamTexture.deviceName);
     }
     
     private void OnGUI()
