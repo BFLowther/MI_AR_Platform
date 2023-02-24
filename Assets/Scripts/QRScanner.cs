@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class QRScanner : MonoBehaviour
 {
+    [Range(0.1f,3.0f)]
+    public float delay = 0.5f;
     WebCamTexture webcamTexture;
     string QrCode = string.Empty;
 
@@ -19,6 +21,7 @@ public class QRScanner : MonoBehaviour
         rect.sizeDelta = new Vector2(max,max);
         webcamTexture = new WebCamTexture((int)(max/2.0f), (int)(max/2.0f));
         renderer.texture = webcamTexture;
+        webcamTexture.filterMode = FilterMode.Trilinear;
         //renderer.material.mainTexture = webcamTexture;
         StartCoroutine(GetQRCode());
     }
@@ -51,7 +54,7 @@ public class QRScanner : MonoBehaviour
                 }
             }
             catch (Exception ex) { Debug.LogWarning(ex.Message); }
-            yield return null;
+            yield return new WaitForSeconds(0.5f);
         }
         webcamTexture.Stop();
     }
