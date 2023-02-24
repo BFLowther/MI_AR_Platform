@@ -19,7 +19,16 @@ public class QRScanner : MonoBehaviour
         int max = Mathf.Max(Screen.width, Screen.height);
         var rect = GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(max,max);
-        webcamTexture = new WebCamTexture((int)(max/2.0f), (int)(max/2.0f));
+
+        if (PlayerPrefs.GetString("default_camera", "") == "")
+            webcamTexture = new WebCamTexture((int)(max/2.0f), (int)(max/2.0f));
+        else
+            webcamTexture = new WebCamTexture(PlayerPrefs.GetString("default_camera", ""),(int)(max/2.0f), (int)(max/2.0f));
+
+        PlayerPrefs.SetString("default_camera", webcamTexture.deviceName);
+
+        Debug.Log(webcamTexture.deviceName);
+        Debug.Log("Number of cameras: " + WebCamTexture.devices.Length);
         renderer.texture = webcamTexture;
         webcamTexture.filterMode = FilterMode.Trilinear;
         //renderer.material.mainTexture = webcamTexture;
@@ -61,6 +70,28 @@ public class QRScanner : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
         webcamTexture.Stop();
+    }
+
+    public void NextCamera()
+    {
+        int index = 0;
+        for(int i = 0; i < WebCamTexture.devices.Length; i++)
+        {
+            Debug.Log(i + " : " + webcamTexture.deviceName);
+            if (WebCamTexture.devices[i].name == webcamTexture.deviceName)
+            {
+                index = i;
+            }
+        }
+
+        if (index >= WebCamTexture.devices.Length)
+        {
+            index = 0;
+        }
+
+        webcamTexture.deviceName = WebCamTexture.devices[index].name;
+        PlayerPrefs.SetString("default_camera", webcamTexture.deviceName);
+        Debug.Log(webcamTexture.deviceName);
     }
     
     private void OnGUI()
