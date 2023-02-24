@@ -8,6 +8,8 @@ using UnityEngine.SceneManagement;
 
 public class QRScanner : MonoBehaviour
 {
+    [Range(0.1f,3.0f)]
+    public float delay = 0.5f;
     WebCamTexture webcamTexture;
     string QrCode = string.Empty;
 
@@ -17,8 +19,9 @@ public class QRScanner : MonoBehaviour
         int max = Mathf.Max(Screen.width, Screen.height);
         var rect = GetComponent<RectTransform>();
         rect.sizeDelta = new Vector2(max,max);
-        webcamTexture = new WebCamTexture(max, max);
+        webcamTexture = new WebCamTexture((int)(max/2.0f), (int)(max/2.0f));
         renderer.texture = webcamTexture;
+        webcamTexture.filterMode = FilterMode.Trilinear;
         //renderer.material.mainTexture = webcamTexture;
         StartCoroutine(GetQRCode());
     }
@@ -39,18 +42,23 @@ public class QRScanner : MonoBehaviour
                     QrCode = Result.Text;
                     if (!string.IsNullOrEmpty(QrCode))
                     {
-                        UnlockManager.Instance.todaysUnlocks.Add(QrCode);
-                        Debug.Log("DECODED TEXT FROM QR: " + QrCode);
-                        // Melisa add scene change here
+                        if (UnlockManager.Instance.validUnlocks.Contains(QrCode)) //&&
+                            //!UnlockManager.Instance.todaysUnlocks.Contains(QrCode))
+                        {
+                            //UnlockManager.Instance.todaysUnlocks.Add(QrCode);
+                            UnlockManager.Instance.tryingToUnlock = QrCode;
+                            Debug.Log("DECODED TEXT FROM QR: " + QrCode);
+                            // Melisa add scene change here
 
-                        SceneManager.LoadScene("Workout");
-                        ///////////////////////////////
-                        break;
+                            SceneManager.LoadScene("Workout");
+                            ///////////////////////////////
+                            break;
+                        }
                     }
                 }
             }
             catch (Exception ex) { Debug.LogWarning(ex.Message); }
-            yield return null;
+            yield return new WaitForSeconds(0.5f);
         }
         webcamTexture.Stop();
     }
