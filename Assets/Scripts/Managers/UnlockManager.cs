@@ -6,6 +6,7 @@ public class UnlockManager : MonoBehaviour
 {
     public static UnlockManager Instance;
     public List<string> todaysUnlocks;
+    public string tryingToUnlock = "";
 
     void Awake()
     {
@@ -19,5 +20,11 @@ public class UnlockManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
+    }
+
+    public void ConfirmUnlock()
+    {
+        todaysUnlocks.Add(tryingToUnlock);
+        tryingToUnlock = "";
     }
 }
