@@ -42,14 +42,18 @@ public class QRScanner : MonoBehaviour
                     QrCode = Result.Text;
                     if (!string.IsNullOrEmpty(QrCode))
                     {
-                        //UnlockManager.Instance.todaysUnlocks.Add(QrCode);
-                        UnlockManager.Instance.tryingToUnlock = QrCode;
-                        Debug.Log("DECODED TEXT FROM QR: " + QrCode);
-                        // Melisa add scene change here
+                        if (UnlockManager.Instance.validUnlocks.Contains(QrCode)) //&&
+                            //!UnlockManager.Instance.todaysUnlocks.Contains(QrCode))
+                        {
+                            //UnlockManager.Instance.todaysUnlocks.Add(QrCode);
+                            UnlockManager.Instance.tryingToUnlock = QrCode;
+                            Debug.Log("DECODED TEXT FROM QR: " + QrCode);
+                            // Melisa add scene change here
 
-                        SceneManager.LoadScene("Workout");
-                        ///////////////////////////////
-                        break;
+                            SceneManager.LoadScene("Workout");
+                            ///////////////////////////////
+                            break;
+                        }
                     }
                 }
             }

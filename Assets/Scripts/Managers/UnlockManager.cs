@@ -6,6 +6,7 @@ public class UnlockManager : MonoBehaviour
 {
     public static UnlockManager Instance;
     public List<string> todaysUnlocks;
+    public List<string> validUnlocks;
     public string tryingToUnlock = "";
 
     void Awake()
