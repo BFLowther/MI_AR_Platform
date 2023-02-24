@@ -13,6 +13,8 @@ public class QRScanner : MonoBehaviour
     WebCamTexture webcamTexture;
     string QrCode = string.Empty;
 
+    public QRUI QRUI;
+
     void Start()
     {
         var renderer = GetComponent<RawImage>();
@@ -59,7 +61,7 @@ public class QRScanner : MonoBehaviour
                             Debug.Log("DECODED TEXT FROM QR: " + QrCode);
                             // Melisa add scene change here
 
-                            SceneManager.LoadScene("Workout");
+                            QRUI.ScannedPopUp(QrCode);
                             ///////////////////////////////
                             break;
                         }
