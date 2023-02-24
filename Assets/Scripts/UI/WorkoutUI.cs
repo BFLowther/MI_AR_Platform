@@ -17,10 +17,7 @@ public class WorkoutUI : MonoBehaviour
 
     private void Start()
     {
-        if (UnlockManager.Instance.todaysUnlocks.Count > 0)
-        {
-            SetUp();
-        }
+        SetUp();
 
 
     }
