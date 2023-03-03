@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
@@ -67,9 +67,10 @@ public class QRScanner : MonoBehaviour
                                 Debug.Log("DECODED TEXT FROM QR: " + QrCode);
                                 // Melisa add scene change here
 
-                            QRUI.ScannedPopUp(QrCode);
-                            ///////////////////////////////
-                            break;
+                                QRUI.ScannedPopUp(QrCode);
+                                ///////////////////////////////
+                                break;
+                            }
                         }
                     }
                 }
