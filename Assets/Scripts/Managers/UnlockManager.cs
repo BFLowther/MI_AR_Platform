@@ -37,4 +37,9 @@ public class UnlockManager : MonoBehaviour
         todaysUnlocks.Add(tryingToUnlock);
         tryingToUnlock = "";
     }
+
+    public void CancelUnlock()
+    {
+        tryingToUnlock = "";
+    }
 }
