@@ -52,9 +52,15 @@ public class WorkoutUI : MonoBehaviour
         moreInfoPageGO.SetActive(true);
     }
 
-    public void Complete()
+    public void CloseMoreInfoPage()
     {
+        UnlockManager.Instance.CancelUnlock();
+        moreInfoPageGO.SetActive(false);
+    }
+    public void Complete()
+    { 
         UnlockManager.Instance.ConfirmUnlock();
         curItem.SetToggle();
+        moreInfoPageGO.SetActive(false);
     }
 }
