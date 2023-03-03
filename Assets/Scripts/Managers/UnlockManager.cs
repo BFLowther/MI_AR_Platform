@@ -23,9 +23,23 @@ public class UnlockManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        validUnlocks.Add("Exercise #1");
+        validUnlocks.Add("Exercise #2");
+        validUnlocks.Add("Exercise #3");
+        validUnlocks.Add("Exercise #4");
+        validUnlocks.Add("Exercise #5");
+    }
+
     public void ConfirmUnlock()
     {
         todaysUnlocks.Add(tryingToUnlock);
+        tryingToUnlock = "";
+    }
+
+    public void CancelUnlock()
+    {
         tryingToUnlock = "";
     }
 }
