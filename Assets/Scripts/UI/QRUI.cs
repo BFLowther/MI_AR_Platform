@@ -36,7 +36,7 @@ public class QRUI : MonoBehaviour
     {
         scannedPopUpGO.SetActive(true);
         whatYouScannedText.text = QRCode;
-        timer = 10f;
+        timer = 5f;
     }
 
     private void ExitPopUp()
