@@ -53,6 +53,7 @@ public class QRScanner : MonoBehaviour
                 if (countDown < 0.0f)
                 {
                     countDown = delay;
+                    GetComponent<RectTransform>().rotation = Quaternion.Euler(0.0f,0.0f,-webcamTexture.videoRotationAngle);
                     result = barCodeReader.Decode(snap.GetRawTextureData(), webcamTexture.width, webcamTexture.height, RGBLuminanceSource.BitmapFormat.RGB24);
                     if (result != null)
                     {
