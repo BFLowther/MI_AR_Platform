@@ -6,12 +6,13 @@ using TMPro;
 
 public class Goal : MonoBehaviour
 {
+    public int step = 0;
     public GoalSetup goalSetup;
     public TMP_Text titleText;
     public GameObject completeButton;
     public Toggle completedToggle;
     public WorkoutUI workoutUI;
-    //public ExerciseConfig ExerciseConfig;
+    public ExerciseConfig ExerciseConfig;
 
     public void SetUp()
     {
@@ -27,14 +28,17 @@ public class Goal : MonoBehaviour
             {
                 completeButton.SetActive(true);
             }
+            else
+            {
+                completeButton.SetActive(false);
+            }
         }
         
     }
-
-
     public void Complete()
     {
         goalSetup.isCompleted = true;
+        ExerciseConfig.GoalSetups[step]= goalSetup;
 
         workoutUI.RefreshMorePage();
     }

@@ -27,11 +27,25 @@ public class WorkoutUI : MonoBehaviour
 
     private void SetUp()
     {
+        Debug.Log("ttu"+ UnlockManager.Instance.tryingToUnlock);
+        for(int i=0; i<exerciseItems.Count; i++)
+        {
+            Debug.Log("Exercise name tttt"+ exerciseItems[i].exerciseConfig.ExerciseName + UnlockManager.Instance.tryingToUnlock);
+            if(UnlockManager.Instance.tryingToUnlock == exerciseItems[i].exerciseConfig.ExerciseName || exerciseItems[i].exerciseConfig.isUnlocked)
+            {
+                Debug.Log("Exercise name"+ exerciseItems[i].exerciseConfig.ExerciseName + UnlockManager.Instance.tryingToUnlock);
+                 exerciseItems[i].Unlock(this);
+            }
+        }
+    }
+
+    public void Refresh()
+    {
         for(int i=0; i<exerciseItems.Count; i++)
         {
             if(UnlockManager.Instance.tryingToUnlock == exerciseItems[i].exerciseConfig.ExerciseName || exerciseItems[i].exerciseConfig.isUnlocked)
             {
-                exerciseItems[i].Unlock(this);
+                exerciseItems[i].Refresh();
             }
         }
     }
@@ -64,6 +78,7 @@ public class WorkoutUI : MonoBehaviour
             if (item.exerciseConfig.GoalSetups[i].isCompleted)
             {
                 gameObject.GetComponent<Goal>().goalSetup = item.exerciseConfig.GoalSetups[i];
+                gameObject.GetComponent<Goal>().ExerciseConfig = item.exerciseConfig;
                 gameObject.GetComponent<Goal>().SetUp();
             }
             else
@@ -72,6 +87,7 @@ public class WorkoutUI : MonoBehaviour
                 {
                     item.exerciseConfig.GoalSetups[i].isReadyToComplete = true;
                     gameObject.GetComponent<Goal>().goalSetup = item.exerciseConfig.GoalSetups[i];
+                    gameObject.GetComponent<Goal>().ExerciseConfig = item.exerciseConfig;
                     gameObject.GetComponent<Goal>().SetUp();
                 }
                 else
@@ -80,12 +96,14 @@ public class WorkoutUI : MonoBehaviour
                     {
                         item.exerciseConfig.GoalSetups[i].isReadyToComplete = true;
                         gameObject.GetComponent<Goal>().goalSetup = item.exerciseConfig.GoalSetups[i];
+                        gameObject.GetComponent<Goal>().ExerciseConfig = item.exerciseConfig;
                         gameObject.GetComponent<Goal>().SetUp();
                     }
                     else
                     {
                         item.exerciseConfig.GoalSetups[i].isReadyToComplete = false;
                         gameObject.GetComponent<Goal>().goalSetup = item.exerciseConfig.GoalSetups[i];
+                        gameObject.GetComponent<Goal>().ExerciseConfig = item.exerciseConfig;
                         gameObject.GetComponent<Goal>().SetUp();
                     }
                 }
@@ -127,6 +145,7 @@ public class WorkoutUI : MonoBehaviour
 
     public void CloseMoreInfoPage()
     {
+        Refresh();
         moreInfoPageGO.SetActive(false);
     }
 

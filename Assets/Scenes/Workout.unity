@@ -1039,6 +1039,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: WorkoutCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7246134108656750863, guid: cc950e2d43b2745cfa547729527cfcbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246134108656750863, guid: cc950e2d43b2745cfa547729527cfcbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246134108656750863, guid: cc950e2d43b2745cfa547729527cfcbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7070606918824879935}
+    - target: {fileID: 7246134108656750863, guid: cc950e2d43b2745cfa547729527cfcbe, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7324855805487078975, guid: cc950e2d43b2745cfa547729527cfcbe, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1137,3 +1153,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc950e2d43b2745cfa547729527cfcbe, type: 3}
+--- !u!1 &7070606918824879935 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6483837888145445759, guid: cc950e2d43b2745cfa547729527cfcbe, type: 3}
+  m_PrefabInstance: {fileID: 7070606918824879934}
+  m_PrefabAsset: {fileID: 0}
