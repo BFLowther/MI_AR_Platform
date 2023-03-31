@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a495d9a518e042aa86694e0fb244976, type: 3}
+  m_Name: Exercise3
+  m_EditorClassIdentifier: 
+  ExerciseName: Exercise #3
+  infoString: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
+    odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem
+    at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec
+    tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla.
+    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
+    himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.  
+    Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. '
+  isUnlocked: 0
+  GoalSetups:
+  - titleName: Step #1
+    isCompleted: 0
+    isReadyToComplete: 0

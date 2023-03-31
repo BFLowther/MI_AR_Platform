@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using static UnityEditor.Progress;
 
 public class WorkoutUI : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class WorkoutUI : MonoBehaviour
     public GameObject moreInfoPageGO;
     public TMP_Text titleText;
     public TMP_Text infoText;
+    public GameObject goalsGO;
+    public GameObject goalsParentGO;
     private ExerciseItem curItem;
     
 
@@ -26,41 +29,111 @@ public class WorkoutUI : MonoBehaviour
     {
         for(int i=0; i<exerciseItems.Count; i++)
         {
-            if(UnlockManager.Instance.tryingToUnlock == exerciseItems[i].ExerciseName)
+            if(UnlockManager.Instance.tryingToUnlock == exerciseItems[i].exerciseConfig.ExerciseName || exerciseItems[i].exerciseConfig.isUnlocked)
             {
-                MoreInfoPage(exerciseItems[i].ExerciseName, exerciseItems[i].infoString, exerciseItems[i]);
-            }
-
-            if (UnlockManager.Instance.todaysUnlocks.Contains(exerciseItems[i].ExerciseName))
-            {
-                exerciseItems[i].SetToggle();
+                exerciseItems[i].Unlock(this);
             }
         }
     }
 
     public void QRScanner()
     {
+        UnlockManager.Instance.CancelUnlock();
         SceneManager.LoadScene("QRCodeTest");
     }
 
     public void MoreInfoPage(string title, string info, ExerciseItem item)
     {
-
         titleText.text = title;
         infoText.text = info;
-        curItem = item;
+
+        for(int i = 0; i<goalsParentGO.transform.childCount; i++)
+        {
+            Destroy(goalsParentGO.transform.GetChild(i).gameObject);
+        }
+
+        GameObject gameObject;
+        for(int i = 0; i<item.exerciseConfig.GoalSetups.Count; i++)
+        {
+            gameObject = Instantiate(goalsGO);
+            gameObject.SetActive(false);
+            gameObject.transform.parent = goalsParentGO.transform;
+
+            gameObject.GetComponent<Goal>().workoutUI = this;
+
+            if (item.exerciseConfig.GoalSetups[i].isCompleted)
+            {
+                gameObject.GetComponent<Goal>().goalSetup = item.exerciseConfig.GoalSetups[i];
+                gameObject.GetComponent<Goal>().SetUp();
+            }
+            else
+            {
+                if (i == 0)
+                {
+                    item.exerciseConfig.GoalSetups[i].isReadyToComplete = true;
+                    gameObject.GetComponent<Goal>().goalSetup = item.exerciseConfig.GoalSetups[i];
+                    gameObject.GetComponent<Goal>().SetUp();
+                }
+                else
+                {
+                    if (item.exerciseConfig.GoalSetups[i - 1].isCompleted)
+                    {
+                        item.exerciseConfig.GoalSetups[i].isReadyToComplete = true;
+                        gameObject.GetComponent<Goal>().goalSetup = item.exerciseConfig.GoalSetups[i];
+                        gameObject.GetComponent<Goal>().SetUp();
+                    }
+                    else
+                    {
+                        item.exerciseConfig.GoalSetups[i].isReadyToComplete = false;
+                        gameObject.GetComponent<Goal>().goalSetup = item.exerciseConfig.GoalSetups[i];
+                        gameObject.GetComponent<Goal>().SetUp();
+                    }
+                }
+            }
+
+            gameObject.SetActive(true);
+        }
+        
         moreInfoPageGO.SetActive(true);
+    }
+
+    public void RefreshMorePage()
+    {
+        GameObject[] gameObjects = new GameObject[goalsParentGO.transform.childCount];
+
+        for (int i = 0; i < gameObjects.Length; i++)
+        {
+            gameObjects[i] = goalsParentGO.transform.GetChild(i).gameObject;
+
+            if (gameObjects[i].GetComponent<Goal>().goalSetup.isCompleted)
+            {
+                gameObjects[i].GetComponent<Goal>().SetUp();
+            }
+            else
+            {
+                if (gameObjects[i - 1].GetComponent<Goal>().goalSetup.isCompleted)
+                {
+                    gameObjects[i].GetComponent<Goal>().goalSetup.isReadyToComplete = true;
+                    gameObjects[i].GetComponent<Goal>().SetUp();
+                }
+                else
+                {
+                    gameObjects[i].GetComponent<Goal>().goalSetup.isReadyToComplete = false;
+                    gameObjects[i].GetComponent<Goal>().SetUp();
+                }
+            }
+        }
     }
 
     public void CloseMoreInfoPage()
     {
-        UnlockManager.Instance.CancelUnlock();
         moreInfoPageGO.SetActive(false);
     }
-    public void Complete()
+
+    /*public void Complete()
     { 
         UnlockManager.Instance.ConfirmUnlock();
         curItem.SetToggle();
         moreInfoPageGO.SetActive(false);
-    }
+    }*/
 }
