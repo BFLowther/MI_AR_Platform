@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
-using static UnityEditor.Progress;
+//using static UnityEditor.Progress;
 
 public class WorkoutUI : MonoBehaviour
 {

@@ -20,18 +20,18 @@ MonoBehaviour:
     Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos
     himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.  
     Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. '
-  isUnlocked: 1
+  isUnlocked: 0
   isDone: 0
   GoalSetups:
-  - titleName: Step #1
+  - titleName: Step #2
     isCompleted: 0
     isReadyToComplete: 0
-    step: 0
+    step: 1
   - titleName: Step #2
     isCompleted: 0
     isReadyToComplete: 0
     step: 1
   - titleName: Step #3
     isCompleted: 0
-    isReadyToComplete: 0
+    isReadyToComplete: 1
     step: 2

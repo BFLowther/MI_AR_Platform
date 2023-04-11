@@ -21,7 +21,9 @@ MonoBehaviour:
     himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc.  
     Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. '
   isUnlocked: 0
+  isDone: 0
   GoalSetups:
   - titleName: Step #1
     isCompleted: 0
     isReadyToComplete: 0
+    step: 0
