@@ -6,25 +6,25 @@ using TMPro;
 
 public class Goal : MonoBehaviour
 {
+    [HideInInspector]
     public int step = 0;
-    public GoalSetup goalSetup;
     public TMP_Text titleText;
     public GameObject completeButton;
     public Toggle completedToggle;
     public WorkoutUI workoutUI;
-    public ExerciseConfig ExerciseConfig;
+    public ExerciseItem exerciseItem;
 
     public void SetUp()
     {
-        titleText.text = goalSetup.titleName;
-        if (goalSetup.isCompleted)
+        titleText.text = exerciseItem.GoalSetups[step].titleName;
+        if (exerciseItem.GoalSetups[step].isCompleted)
         {
             completeButton.SetActive(false);
             completedToggle.isOn = true;
         }
         else
         {
-            if (goalSetup.isReadyToComplete)
+            if (exerciseItem.GoalSetups[step].isReadyToComplete)
             {
                 completeButton.SetActive(true);
             }
@@ -37,9 +37,9 @@ public class Goal : MonoBehaviour
     }
     public void Complete()
     {
-        goalSetup.isCompleted = true;
-        ExerciseConfig.GoalSetups[step]= goalSetup;
-
+        completedToggle.isOn = true;
+        completeButton.SetActive(false);
+        exerciseItem.GoalSetups[step].isCompleted = true;
         workoutUI.RefreshMorePage();
     }
 }

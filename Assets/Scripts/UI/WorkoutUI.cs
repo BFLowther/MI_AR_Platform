@@ -30,10 +30,10 @@ public class WorkoutUI : MonoBehaviour
         Debug.Log("ttu"+ UnlockManager.Instance.tryingToUnlock);
         for(int i=0; i<exerciseItems.Count; i++)
         {
-            Debug.Log("Exercise name tttt"+ exerciseItems[i].exerciseConfig.ExerciseName + UnlockManager.Instance.tryingToUnlock);
-            if(UnlockManager.Instance.tryingToUnlock == exerciseItems[i].exerciseConfig.ExerciseName || exerciseItems[i].exerciseConfig.isUnlocked)
+            Debug.Log("Exercise name tttt"+ exerciseItems[i].ExerciseName + UnlockManager.Instance.tryingToUnlock);
+            if(UnlockManager.Instance.tryingToUnlock == exerciseItems[i].ExerciseName || exerciseItems[i].isUnlocked)
             {
-                Debug.Log("Exercise name"+ exerciseItems[i].exerciseConfig.ExerciseName + UnlockManager.Instance.tryingToUnlock);
+                Debug.Log("Exercise name"+ exerciseItems[i].ExerciseName + UnlockManager.Instance.tryingToUnlock);
                  exerciseItems[i].Unlock(this);
             }
         }
@@ -43,7 +43,7 @@ public class WorkoutUI : MonoBehaviour
     {
         for(int i=0; i<exerciseItems.Count; i++)
         {
-            if(UnlockManager.Instance.tryingToUnlock == exerciseItems[i].exerciseConfig.ExerciseName || exerciseItems[i].exerciseConfig.isUnlocked)
+            if(UnlockManager.Instance.tryingToUnlock == exerciseItems[i].ExerciseName || exerciseItems[i].isUnlocked)
             {
                 exerciseItems[i].Refresh();
             }
@@ -67,7 +67,7 @@ public class WorkoutUI : MonoBehaviour
         }
 
         GameObject gameObject;
-        for(int i = 0; i<item.exerciseConfig.GoalSetups.Count; i++)
+        for(int i = 0; i<item.GoalSetups.Count; i++)
         {
             gameObject = Instantiate(goalsGO);
             gameObject.SetActive(false);
@@ -75,35 +75,31 @@ public class WorkoutUI : MonoBehaviour
 
             gameObject.GetComponent<Goal>().workoutUI = this;
 
-            if (item.exerciseConfig.GoalSetups[i].isCompleted)
+            if (item.GoalSetups[i].isCompleted)
             {
-                gameObject.GetComponent<Goal>().goalSetup = item.exerciseConfig.GoalSetups[i];
-                gameObject.GetComponent<Goal>().ExerciseConfig = item.exerciseConfig;
+                gameObject.GetComponent<Goal>().exerciseItem = item;
                 gameObject.GetComponent<Goal>().SetUp();
             }
             else
             {
                 if (i == 0)
                 {
-                    item.exerciseConfig.GoalSetups[i].isReadyToComplete = true;
-                    gameObject.GetComponent<Goal>().goalSetup = item.exerciseConfig.GoalSetups[i];
-                    gameObject.GetComponent<Goal>().ExerciseConfig = item.exerciseConfig;
+                    item.GoalSetups[i].isReadyToComplete = true;
+                    gameObject.GetComponent<Goal>().exerciseItem = item;
                     gameObject.GetComponent<Goal>().SetUp();
                 }
                 else
                 {
-                    if (item.exerciseConfig.GoalSetups[i - 1].isCompleted)
+                    if (item.GoalSetups[i - 1].isCompleted)
                     {
-                        item.exerciseConfig.GoalSetups[i].isReadyToComplete = true;
-                        gameObject.GetComponent<Goal>().goalSetup = item.exerciseConfig.GoalSetups[i];
-                        gameObject.GetComponent<Goal>().ExerciseConfig = item.exerciseConfig;
+                        item.GoalSetups[i].isReadyToComplete = true;
+                        gameObject.GetComponent<Goal>().exerciseItem = item;
                         gameObject.GetComponent<Goal>().SetUp();
                     }
                     else
                     {
-                        item.exerciseConfig.GoalSetups[i].isReadyToComplete = false;
-                        gameObject.GetComponent<Goal>().goalSetup = item.exerciseConfig.GoalSetups[i];
-                        gameObject.GetComponent<Goal>().ExerciseConfig = item.exerciseConfig;
+                        item.GoalSetups[i].isReadyToComplete = false;
+                        gameObject.GetComponent<Goal>().exerciseItem = item;
                         gameObject.GetComponent<Goal>().SetUp();
                     }
                 }
@@ -123,20 +119,20 @@ public class WorkoutUI : MonoBehaviour
         {
             gameObjects[i] = goalsParentGO.transform.GetChild(i).gameObject;
 
-            if (gameObjects[i].GetComponent<Goal>().goalSetup.isCompleted)
+            if (gameObjects[i].GetComponent<Goal>().completedToggle.isOn)
             {
                 gameObjects[i].GetComponent<Goal>().SetUp();
             }
             else
             {
-                if (gameObjects[i - 1].GetComponent<Goal>().goalSetup.isCompleted)
+                if (gameObjects[i - 1].GetComponent<Goal>().completedToggle.isOn)
                 {
-                    gameObjects[i].GetComponent<Goal>().goalSetup.isReadyToComplete = true;
+                    //gameObjects[i].GetComponent<Goal>().goalSetup.isReadyToComplete = true;
                     gameObjects[i].GetComponent<Goal>().SetUp();
                 }
                 else
                 {
-                    gameObjects[i].GetComponent<Goal>().goalSetup.isReadyToComplete = false;
+                    //gameObjects[i].GetComponent<Goal>().goalSetup.isReadyToComplete = false;
                     gameObjects[i].GetComponent<Goal>().SetUp();
                 }
             }
