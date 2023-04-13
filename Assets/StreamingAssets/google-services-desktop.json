@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "794539735748",
+    "project_id": "magnolia-interactive-geo-app",
+    "storage_bucket": "magnolia-interactive-geo-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:794539735748:android:1da3539c4b055db8656791",
+        "android_client_info": {
+          "package_name": "com.magnolia_interactive.mi_ar_platform"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "794539735748-m1871ln8m1qmqqo5eimnfl3get0ojes4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhB16Z3BhKS1gClOrKYcKTXTyA3t8dsoI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "794539735748-m1871ln8m1qmqqo5eimnfl3get0ojes4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
+  <string name="gcm_defaultSenderId" translatable="false">794539735748</string>
+  <string name="google_storage_bucket" translatable="false">magnolia-interactive-geo-app.appspot.com</string>
+  <string name="project_id" translatable="false">magnolia-interactive-geo-app</string>
+  <string name="google_api_key" translatable="false">AIzaSyAhB16Z3BhKS1gClOrKYcKTXTyA3t8dsoI</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAhB16Z3BhKS1gClOrKYcKTXTyA3t8dsoI</string>
+  <string name="google_app_id" translatable="false">1:794539735748:android:1da3539c4b055db8656791</string>
+  <string name="default_web_client_id" translatable="false">794539735748-m1871ln8m1qmqqo5eimnfl3get0ojes4.apps.googleusercontent.com</string>
+</resources>
