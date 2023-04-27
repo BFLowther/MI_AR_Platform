@@ -6,7 +6,9 @@ using TMPro;
 
 public class ExerciseItem : MonoBehaviour
 {
-    public ExerciseConfig exerciseConfig;
+    public string ExerciseName;
+    public string infoString;
+    public List<GoalSetup> GoalSetups = new List<GoalSetup>();
 
     [SerializeField]
     private Toggle isDoneToggle;
@@ -23,13 +25,17 @@ public class ExerciseItem : MonoBehaviour
     private WorkoutUI workoutUI;
 
     private List<GameObject> subTaskGOs = new List<GameObject>();
-
+   
     private int goalsDoneCount = 0;
 
+    [HideInInspector]
+    public bool isUnlocked = false;
+    [HideInInspector]
+    public bool isDone = false;
 
     private void Start()
     {
-        titleText.text = exerciseConfig.ExerciseName;
+        titleText.text = ExerciseName;
     }
 
     public void Unlock(WorkoutUI workoutUIRef)
@@ -37,13 +43,13 @@ public class ExerciseItem : MonoBehaviour
         workoutUI = workoutUIRef;
         GameObject gameObject;
         goalsDoneCount = 0;
-        for (int i = 0; i < exerciseConfig.GoalSetups.Count; i++)
+        for (int i = 0; i < GoalSetups.Count; i++)
         {
             gameObject = Instantiate(subtaskToggles);
             gameObject.SetActive(false);
             gameObject.transform.parent = subtaskParent.transform;
 
-            if (exerciseConfig.GoalSetups[i].isCompleted)
+            if (GoalSetups[i].isCompleted)
             {
                 gameObject.GetComponent<Toggle>().isOn = true;
                 goalsDoneCount++;
@@ -53,9 +59,9 @@ public class ExerciseItem : MonoBehaviour
             subTaskGOs.Add(gameObject);
 
         }
-        exerciseConfig.isUnlocked = true;
+        isUnlocked = true;
 
-        if(goalsDoneCount  == exerciseConfig.GoalSetups.Count)
+        if(goalsDoneCount  == GoalSetups.Count)
         {
             SetDoneToggle();
         }
@@ -66,13 +72,13 @@ public class ExerciseItem : MonoBehaviour
         workoutUI = workoutUIRef;
         GameObject gameObject;
         goalsDoneCount = 0;
-        for (int i = 0; i < exerciseConfig.GoalSetups.Count; i++)
+        for (int i = 0; i < GoalSetups.Count; i++)
         {
             gameObject = Instantiate(subtaskToggles);
             gameObject.SetActive(false);
             gameObject.transform.parent = subtaskParent.transform;
 
-            if (exerciseConfig.GoalSetups[i].isCompleted)
+            if (GoalSetups[i].isCompleted)
             {
                 gameObject.GetComponent<Toggle>().isOn = true;
                 goalsDoneCount++;
@@ -83,7 +89,7 @@ public class ExerciseItem : MonoBehaviour
 
         }
 
-        if(goalsDoneCount  == exerciseConfig.GoalSetups.Count)
+        if(goalsDoneCount  == GoalSetups.Count)
         {
             SetDoneToggle();
         }
@@ -91,19 +97,19 @@ public class ExerciseItem : MonoBehaviour
 
     public void Refresh()
     {
-        if(!exerciseConfig.isDone)
+        if(!isDone)
         {
             goalsDoneCount = 0;
             for(int i =0; i<subTaskGOs.Count; i++)
             {
             
-                if (exerciseConfig.GoalSetups[i].isCompleted)
+                if (GoalSetups[i].isCompleted)
                 {
                     subTaskGOs[i].GetComponent<Toggle>().isOn = true;
                     goalsDoneCount++;
                 }
             }
-            if(goalsDoneCount  == exerciseConfig.GoalSetups.Count)
+            if(goalsDoneCount  == GoalSetups.Count)
             {
                 SetDoneToggle();
             }
@@ -111,15 +117,15 @@ public class ExerciseItem : MonoBehaviour
     }
     public void SetDoneToggle()
     {
-        exerciseConfig.isDone = true;
+        isDone = true;
         isDoneToggle.isOn = true;
     }
 
     public void MoreInfo()
     {
-        if (exerciseConfig.isUnlocked)
+        if (isUnlocked)
         {
-            workoutUI.MoreInfoPage(exerciseConfig.ExerciseName, exerciseConfig.infoString, this);
+            workoutUI.MoreInfoPage(ExerciseName, infoString, this);
         }
     }
 
