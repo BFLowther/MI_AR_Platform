@@ -3068,59 +3068,71 @@ MonoBehaviour:
     - Task_#1
     - Task_#2
     - Task_#3
+    qr_code: http://gfoutdoorfitness.com/video.html?id=UBX-223
   - name: '#2_Stepper'
     tasks:
     - Task_#1
     - Task_#2
+    qr_code: http://gfoutdoorfitness.com/video.html?id=UBX-292
   - name: '#3_Pullup_Bar'
     tasks:
     - Task_#1
     - Task_#2
     - Task_#3
     - Task_#4
+    qr_code: http://gfoutdoorfitness.com/video.html?id=45s
   - name: '#4_Leg_Extension_Curl'
     tasks:
     - Task_#1
     - Task_#2
     - Task_#3
+    qr_code: http://qrs.ly/3w3oxkk
   - name: '#5_Tricep_Press'
     tasks:
     - Task_#1
     - Task_#2
     - Task_#3
     - Task_#4
+    qr_code: http://qrs.ly/173oxjp
   - name: '#6_Squat'
     tasks:
     - Task_#1
     - Task_#2
+    qr_code: http://qrs.ly/8z3oxii
   - name: '#7_Chest_Press'
     tasks:
     - Task_#1
     - Task_#2
     - Task_#3
+    qr_code: http://gfoutdoorfitness.com/video.html?id=UBX-246
   - name: '#8_Stair_Climber'
     tasks:
     - Task_#1
     - Task_#2
+    qr_code: NoCode
   - name: '#9_Sit-ups'
     tasks:
     - Task_#1
     - Task_#2
     - Task_#3
+    qr_code: http://gfoutdoorfitness.com/video.html?id=UBX-223
   - name: '#10_Recumbent_Bike'
     tasks:
     - Task_#1
     - Task_#2
     - Task_#3
     - Task_#4
+    qr_code: http://gfoutdoorfitness.com/video.html?id=GR2005-1-49
   - name: '#11_Air_Walker'
     tasks:
     - Task_#1
     - Task_#2
+    qr_code: http://qrs.ly/u73gehb
   - name: '#12_Ski'
     tasks:
     - Task_#1
     - Task_#2
+    qr_code: http://qrs.ly/j33gdsx
   moreInfoPageGO: {fileID: 2579411006953752438}
   titleText: {fileID: 4654180134069558356}
   infoText: {fileID: 3474695979142513597}

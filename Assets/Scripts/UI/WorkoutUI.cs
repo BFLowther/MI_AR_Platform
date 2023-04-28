@@ -9,6 +9,7 @@ using TMPro;
 public class Exercise {
     public string name;
     public List<string> tasks;
+    public string qr_code;
 }
 
 public class WorkoutUI : MonoBehaviour
