@@ -7,7 +7,7 @@ using TMPro;
 public class ExerciseItem : MonoBehaviour
 {
     public string ExerciseName;
-    public List<string> subtasks = new List<string>();
+    private List<string> subtasks = new List<string>();
     public string QRcode;
 
     [SerializeField]
@@ -71,6 +71,32 @@ public class ExerciseItem : MonoBehaviour
         subtasks = tasks;
 
         titleText.text = ExerciseName;
+
+        if (unlocked)
+        {
+            GameObject gameObject;
+            goalsDoneCount = 0;
+            for (int i = 0; i < subtasks.Count; i++)
+            {
+                gameObject = Instantiate(subtaskToggles);
+                gameObject.SetActive(false);
+                gameObject.transform.parent = subtaskParent.transform;
+
+                if (FireUser.instance.unlocks.Contains(name + "." + subtasks[i]))
+                {
+                    gameObject.GetComponent<Toggle>().isOn = true;
+                    goalsDoneCount++;
+                }
+
+                gameObject.SetActive(true);
+                subTaskGOs.Add(gameObject);
+            }
+        }
+
+        if (goalsDoneCount == subtasks.Count)
+        {
+            SetDoneToggle();
+        }
         /*
         GameObject gameObject;
         goalsDoneCount = 0;
