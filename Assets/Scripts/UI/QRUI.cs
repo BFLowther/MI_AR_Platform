@@ -29,7 +29,7 @@ public class QRUI : MonoBehaviour
 
     public void Exit()
     {
-        SceneManager.LoadScene("Workout");
+        SceneManager.LoadScene("Map");
     }
 
     public void ScannedPopUp(string QRCode)
