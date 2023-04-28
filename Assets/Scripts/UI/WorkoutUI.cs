@@ -45,8 +45,17 @@ public class WorkoutUI : MonoBehaviour
             gameObject.SetActive(false);
             gameObject.transform.parent = exerciseItemsParentGO.transform;
 
-            gameObject.GetComponent<ExerciseItem>().SetUp(this, exercises[i].name, exercises[i].qr_code, exercises[i].tasks, true);
+            exerciseItems.Add(gameObject.GetComponent<ExerciseItem>());
 
+            if (FireUser.instance.unlocks.Contains(exercises[i].name))
+            {
+                gameObject.GetComponent<ExerciseItem>().SetUp(this, exercises[i].name, exercises[i].qr_code, exercises[i].tasks, true);
+            }
+            else
+            {
+                gameObject.GetComponent<ExerciseItem>().SetUp(this, exercises[i].name, exercises[i].qr_code, exercises[i].tasks, false);
+            }
+            gameObject.SetActive(true);
 
         }
 

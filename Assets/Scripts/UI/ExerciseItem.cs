@@ -33,10 +33,6 @@ public class ExerciseItem : MonoBehaviour
     [HideInInspector]
     public bool isDone = false;
 
-    private void Start()
-    {
-        titleText.text = ExerciseName;
-    }
 
   /*  public void Unlock(WorkoutUI workoutUIRef)
     {
@@ -73,6 +69,8 @@ public class ExerciseItem : MonoBehaviour
         ExerciseName = name.Replace("_", " ");
         QRcode = code;
         subtasks = tasks;
+
+        titleText.text = ExerciseName;
         /*
         GameObject gameObject;
         goalsDoneCount = 0;
