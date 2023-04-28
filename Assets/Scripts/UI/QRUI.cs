@@ -42,7 +42,7 @@ public class QRUI : MonoBehaviour
     private void ExitPopUp()
     {
         scannedPopUpGO.SetActive(false);
-        SceneManager.LoadScene("Workout");
+        SceneManager.LoadScene("Map");
     }
 
 }
