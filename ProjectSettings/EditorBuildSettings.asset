@@ -5,16 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenuUITest.unity
     guid: 5d1c5e7b33ea2405da9844a564e4a6a3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Workout.unity
     guid: 5d416a6b7b5384d76aa79e1de974e1f2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/QRCodeTest.unity
     guid: 0a6686806db0ae1468babf2ce64b6b30
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ARDemoScene.unity
     guid: 8840b33ff4a15a8459df51898533a919
   - enabled: 1
