@@ -5,9 +5,16 @@ using UnityEngine.SceneManagement;
 using TMPro;
 //using static UnityEditor.Progress;
 
+[System.Serializable]
+public class Exercise {
+    public string name;
+    public List<string> tasks;
+}
+
 public class WorkoutUI : MonoBehaviour
 {
     public List<ExerciseItem> exerciseItems = new List<ExerciseItem>();
+    public List<Exercise> exercises = new List<Exercise>();
 
     [Header("More Info Page")]
     public GameObject moreInfoPageGO;
