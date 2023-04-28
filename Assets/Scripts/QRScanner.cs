@@ -60,18 +60,27 @@ public class QRScanner : MonoBehaviour
                         QrCode = result.Text;
                         if (!string.IsNullOrEmpty(QrCode))
                         {
-                            if (UnlockManager.Instance.validUnlocks.Contains(QrCode)) //&&
+                            //if (UnlockManager.Instance.validUnlocks.Contains(QrCode)) //&&
                                 //!UnlockManager.Instance.todaysUnlocks.Contains(QrCode))
-                            {
+                            //{
                                 //UnlockManager.Instance.todaysUnlocks.Add(QrCode);
-                                UnlockManager.Instance.tryingToUnlock = QrCode;
-                                Debug.Log("DECODED TEXT FROM QR: " + QrCode);
-                                // Melisa add scene change here
+                                for(int i = 0; i < FireUser.instance.exercises.Count; i++)
+                                {
+                                    if(FireUser.instance.exercises[i].qr_code == QrCode)
+                                    {
+                                        UnlockManager.Instance.tryingToUnlock = FireUser.instance.exercises[i].name;
+                                        Debug.Log("DECODED TEXT FROM QR: " + QrCode);
 
-                                QRUI.ScannedPopUp(QrCode);
+                                        if (FireUser.instance.unlocks.Contains(FireUser.instance.exercises[i].name) == false) {
+                                            FireUser.instance.unlocks.Add(FireUser.instance.exercises[i].name);
+                                            FireUser.instance.SaveData();
+                                        }
+                                        QRUI.ScannedPopUp(FireUser.instance.exercises[i].name);
+                                    }
+                                }
                                 ///////////////////////////////
                                 break;
-                            }
+                            //}
                         }
                     }
                 }

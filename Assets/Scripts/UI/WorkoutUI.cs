@@ -36,13 +36,14 @@ public class WorkoutUI : MonoBehaviour
     private void SetUp()
     {
         Debug.Log("ttu"+ UnlockManager.Instance.tryingToUnlock);
+        
         for(int i=0; i<exerciseItems.Count; i++)
         {
             Debug.Log("Exercise name tttt"+ exerciseItems[i].ExerciseName + UnlockManager.Instance.tryingToUnlock);
             if(UnlockManager.Instance.tryingToUnlock == exerciseItems[i].ExerciseName || exerciseItems[i].isUnlocked)
             {
                 Debug.Log("Exercise name"+ exerciseItems[i].ExerciseName + UnlockManager.Instance.tryingToUnlock);
-                 exerciseItems[i].Unlock(this);
+                exerciseItems[i].Unlock(this);
             }
         }
     }
