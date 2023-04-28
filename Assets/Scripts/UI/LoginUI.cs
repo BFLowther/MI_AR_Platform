@@ -11,6 +11,11 @@ public class LoginUI : MonoBehaviour
 
     public LoginHelper loginHelper;
 
+    private void Start()
+    {
+        passwordInput.contentType = TMP_InputField.ContentType.Password;
+    }
+
     public void SignUp()
     {
         loginHelper.SignUp(usernameInput.text, passwordInput.text);
