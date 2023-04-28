@@ -25,6 +25,7 @@ public class LoginHelper : MonoBehaviour
     void Start()
     {
         m_database = FirebaseFirestore.DefaultInstance;
+        //SignIn("yourgeekeric@gmail.com", "password12345!");
     }
 
     void OnDestroy()
