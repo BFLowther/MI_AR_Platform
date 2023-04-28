@@ -73,7 +73,9 @@ public class WorkoutUI : MonoBehaviour
 
     public void QRScanner()
     {
-        UnlockManager.Instance.CancelUnlock();
+        if(UnlockManager.Instance != null)
+            UnlockManager.Instance.CancelUnlock();
+        
         SceneManager.LoadScene("QRCodeTest");
     }
 /*
