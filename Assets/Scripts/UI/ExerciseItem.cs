@@ -64,11 +64,11 @@ public class ExerciseItem : MonoBehaviour
         }
     }
   */
-    public void SetUp(WorkoutUI workoutUIRef, string name, string code, List<string> tasks, bool unlocked)
+    public void SetUp(WorkoutUI workoutUIRef, string _name, string code, List<string> tasks, bool unlocked)
     {
         workoutUI = workoutUIRef;
-        ExerciseName = name.Replace("_", " ");
-        exerciseCodeName = name;
+        ExerciseName = _name.Replace("_", " ");
+        exerciseCodeName = _name;
         QRcode = code;
         subtasks = tasks;
 
@@ -85,7 +85,7 @@ public class ExerciseItem : MonoBehaviour
                 gameObject.SetActive(false);
                 gameObject.transform.parent = subtaskParent.transform;
 
-                if (FireUser.instance.unlocks.Contains(name + "." + subtasks[i]))
+                if (FireUser.instance.unlocks.Contains(_name + "." + subtasks[i]))
                 {
                     gameObject.GetComponent<Toggle>().isOn = true;
                     goalsDoneCount++;
@@ -102,26 +102,24 @@ public class ExerciseItem : MonoBehaviour
         }
     }
 
-   /* public void Refresh()
+   public void Refresh()
     {
-        if(!isDone)
+        goalsDoneCount = 0;
+        for (int i = 0; i < subtasks.Count; i++)
         {
-            goalsDoneCount = 0;
-            for(int i =0; i<subTaskGOs.Count; i++)
+            if (FireUser.instance.unlocks.Contains(exerciseCodeName + "." + subtasks[i]))
             {
-            
-                if (GoalSetups[i].isCompleted)
-                {
-                    subTaskGOs[i].GetComponent<Toggle>().isOn = true;
-                    goalsDoneCount++;
-                }
-            }
-            if(goalsDoneCount  == GoalSetups.Count)
-            {
-                SetDoneToggle();
+                subTaskGOs[i].GetComponent<Toggle>().isOn = true;
+                goalsDoneCount++;
             }
         }
-    }*/
+
+        if (goalsDoneCount == subtasks.Count)
+        {
+            SetDoneToggle();
+        }
+    }
+
     public void SetDoneToggle()
     {
         isDone = true;

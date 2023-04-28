@@ -68,10 +68,7 @@ public class WorkoutUI : MonoBehaviour
     {
         for(int i=0; i<exerciseItems.Count; i++)
         {
-            if(UnlockManager.Instance.tryingToUnlock == exerciseItems[i].ExerciseName || exerciseItems[i].isUnlocked)
-            {
-                //exerciseItems[i].Refresh();
-            }
+            exerciseItems[i].Refresh();
         }
     }
 
@@ -100,7 +97,7 @@ public class WorkoutUI : MonoBehaviour
 
             {
 
-                gameObject.GetComponent<Goal>().SetUp(item.subtasks[i],true,true, i);
+                gameObject.GetComponent<Goal>().SetUp(item.subtasks[i],true,true);
 
             }
             else
@@ -111,7 +108,7 @@ public class WorkoutUI : MonoBehaviour
 
                 {
 
-                    gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], true, false, i);
+                    gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], true, false);
 
                 }
 
@@ -123,7 +120,7 @@ public class WorkoutUI : MonoBehaviour
 
                     {
 
-                        gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], true, false, i);
+                        gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], true, false);
 
                     }
 
@@ -131,49 +128,20 @@ public class WorkoutUI : MonoBehaviour
 
                     {
 
-                        gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], false, false, i);
+                        gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], false, false);
 
                     }
 
                 }
 
             }
-           /* if (item.GoalSetups[i].isCompleted)
-            {
-                gameObject.GetComponent<Goal>().exerciseItem = item;
-                gameObject.GetComponent<Goal>().SetUp();
-            }
-            else
-            {
-                if (i == 0)
-                {
-                    item.GoalSetups[i].isReadyToComplete = true;
-                    gameObject.GetComponent<Goal>().exerciseItem = item;
-                    gameObject.GetComponent<Goal>().SetUp();
-                }
-                else
-                {
-                    if (item.GoalSetups[i - 1].isCompleted)
-                    {
-                        item.GoalSetups[i].isReadyToComplete = true;
-                        gameObject.GetComponent<Goal>().exerciseItem = item;
-                        gameObject.GetComponent<Goal>().SetUp();
-                    }
-                    else
-                    {
-                        item.GoalSetups[i].isReadyToComplete = false;
-                        gameObject.GetComponent<Goal>().exerciseItem = item;
-                        gameObject.GetComponent<Goal>().SetUp();
-                    }
-                }
-            }*/
-
+         
             gameObject.SetActive(true);
         }
         
         moreInfoPageGO.SetActive(true);
     }
-/*
+
     public void RefreshMorePage()
     {
         GameObject[] gameObjects = new GameObject[goalsParentGO.transform.childCount];
@@ -184,23 +152,23 @@ public class WorkoutUI : MonoBehaviour
 
             if (gameObjects[i].GetComponent<Goal>().completedToggle.isOn)
             {
-                gameObjects[i].GetComponent<Goal>().SetUp();
+                gameObjects[i].GetComponent<Goal>().Refresh(true,true);
             }
             else
             {
                 if (gameObjects[i - 1].GetComponent<Goal>().completedToggle.isOn)
                 {
                     //gameObjects[i].GetComponent<Goal>().goalSetup.isReadyToComplete = true;
-                    gameObjects[i].GetComponent<Goal>().SetUp();
+                    gameObjects[i].GetComponent<Goal>().Refresh(true, false);
                 }
                 else
                 {
                     //gameObjects[i].GetComponent<Goal>().goalSetup.isReadyToComplete = false;
-                    gameObjects[i].GetComponent<Goal>().SetUp();
+                    gameObjects[i].GetComponent<Goal>().Refresh(false, false);
                 }
             }
         }
-    }*/
+    }
 
     public void CloseMoreInfoPage()
     {

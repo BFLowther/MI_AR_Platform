@@ -17,10 +17,9 @@ public class Goal : MonoBehaviour
     public Toggle completedToggle;
     public WorkoutUI workoutUI;
 
-    public void SetUp(string _name, bool isReady, bool complete, int stepNum)
+    public void SetUp(string _name, bool isReady, bool complete)
     {
         titleText.text = _name.Replace("_"," ");
-        step = stepNum;
         isCompleted = complete;
         if (complete)
         {
@@ -40,6 +39,26 @@ public class Goal : MonoBehaviour
         }
         
     }
+
+    public void Refresh(bool isReady, bool complete)
+    {
+        if (complete)
+        {
+            completeButton.SetActive(false);
+            completedToggle.isOn = true;
+        }
+        else
+        {
+            if (isReady)
+            {
+                completeButton.SetActive(true);
+            }
+            else
+            {
+                completeButton.SetActive(false);
+            }
+        }
+    }
     
     public void Complete()
     {
@@ -48,6 +67,6 @@ public class Goal : MonoBehaviour
         completedToggle.isOn = true;
         completeButton.SetActive(false);
         isCompleted = true;
-        //workoutUI.RefreshMorePage();
+        workoutUI.RefreshMorePage();
     }
 }
