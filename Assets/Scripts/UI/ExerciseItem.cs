@@ -7,8 +7,8 @@ using TMPro;
 public class ExerciseItem : MonoBehaviour
 {
     public string ExerciseName;
-    public string infoString;
-    public List<GoalSetup> GoalSetups = new List<GoalSetup>();
+    public List<string> subtasks = new List<string>();
+    public string QRcode;
 
     [SerializeField]
     private Toggle isDoneToggle;
@@ -38,7 +38,7 @@ public class ExerciseItem : MonoBehaviour
         titleText.text = ExerciseName;
     }
 
-    public void Unlock(WorkoutUI workoutUIRef)
+  /*  public void Unlock(WorkoutUI workoutUIRef)
     {
         workoutUI = workoutUIRef;
         GameObject gameObject;
@@ -66,10 +66,14 @@ public class ExerciseItem : MonoBehaviour
             SetDoneToggle();
         }
     }
-
-    public void SetUp(WorkoutUI workoutUIRef)
+  */
+    public void SetUp(WorkoutUI workoutUIRef, string name, string code, List<string> tasks, bool unlocked)
     {
         workoutUI = workoutUIRef;
+        ExerciseName = name.Replace("_", " ");
+        QRcode = code;
+        subtasks = tasks;
+        /*
         GameObject gameObject;
         goalsDoneCount = 0;
         for (int i = 0; i < GoalSetups.Count; i++)
@@ -88,14 +92,15 @@ public class ExerciseItem : MonoBehaviour
             subTaskGOs.Add(gameObject);
 
         }
-
+        
         if(goalsDoneCount  == GoalSetups.Count)
         {
             SetDoneToggle();
         }
+        */
     }
 
-    public void Refresh()
+   /* public void Refresh()
     {
         if(!isDone)
         {
@@ -114,7 +119,7 @@ public class ExerciseItem : MonoBehaviour
                 SetDoneToggle();
             }
         }
-    }
+    }*/
     public void SetDoneToggle()
     {
         isDone = true;
@@ -125,7 +130,7 @@ public class ExerciseItem : MonoBehaviour
     {
         if (isUnlocked)
         {
-            workoutUI.MoreInfoPage(ExerciseName, infoString, this);
+           // workoutUI.MoreInfoPage(ExerciseName, infoString, this);
         }
     }
 

@@ -6,7 +6,7 @@ using TMPro;
 
 public class Goal : MonoBehaviour
 {
-    [HideInInspector]
+    /*[HideInInspector]
     public int step = 0;
     public TMP_Text titleText;
     public GameObject completeButton;
@@ -41,5 +41,5 @@ public class Goal : MonoBehaviour
         completeButton.SetActive(false);
         exerciseItem.GoalSetups[step].isCompleted = true;
         workoutUI.RefreshMorePage();
-    }
+    }*/
 }

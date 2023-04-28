@@ -17,6 +17,9 @@ public class WorkoutUI : MonoBehaviour
     public List<ExerciseItem> exerciseItems = new List<ExerciseItem>();
     public List<Exercise> exercises = new List<Exercise>();
 
+    public GameObject exerciseItemGO;
+    public GameObject exerciseItemsParentGO;
+
     [Header("More Info Page")]
     public GameObject moreInfoPageGO;
     public TMP_Text titleText;
@@ -35,6 +38,18 @@ public class WorkoutUI : MonoBehaviour
 
     private void SetUp()
     {
+        GameObject gameObject;
+        for (int i=0; i < exercises.Count; i++)
+        {
+            gameObject = Instantiate(exerciseItemGO);
+            gameObject.SetActive(false);
+            gameObject.transform.parent = exerciseItemsParentGO.transform;
+
+            gameObject.GetComponent<ExerciseItem>().SetUp(this, exercises[i].name, exercises[i].qr_code, exercises[i].tasks, true);
+
+
+        }
+
         Debug.Log("ttu"+ UnlockManager.Instance.tryingToUnlock);
         for(int i=0; i<exerciseItems.Count; i++)
         {
@@ -42,7 +57,7 @@ public class WorkoutUI : MonoBehaviour
             if(UnlockManager.Instance.tryingToUnlock == exerciseItems[i].ExerciseName || exerciseItems[i].isUnlocked)
             {
                 Debug.Log("Exercise name"+ exerciseItems[i].ExerciseName + UnlockManager.Instance.tryingToUnlock);
-                 exerciseItems[i].Unlock(this);
+                // exerciseItems[i].Unlock(this);
             }
         }
     }
@@ -53,7 +68,7 @@ public class WorkoutUI : MonoBehaviour
         {
             if(UnlockManager.Instance.tryingToUnlock == exerciseItems[i].ExerciseName || exerciseItems[i].isUnlocked)
             {
-                exerciseItems[i].Refresh();
+                //exerciseItems[i].Refresh();
             }
         }
     }
@@ -63,7 +78,7 @@ public class WorkoutUI : MonoBehaviour
         UnlockManager.Instance.CancelUnlock();
         SceneManager.LoadScene("QRCodeTest");
     }
-
+/*
     public void MoreInfoPage(string title, string info, ExerciseItem item)
     {
         titleText.text = title;
@@ -145,7 +160,7 @@ public class WorkoutUI : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
     public void CloseMoreInfoPage()
     {
