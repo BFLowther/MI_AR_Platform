@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 #if UNITY_ANDROID || UNITY_IOS
 using Firebase;
@@ -13,10 +14,13 @@ public class FireUser : MonoBehaviour
 {
     #if UNITY_ANDROID || UNITY_IOS
     public static FireUser instance { get; private set; }
-
+    public List<string> unlocks = new List<string>();
+    public List<Exercise> exercises = new List<Exercise>();
     private FirebaseFirestore m_database;
     private FirebaseUser m_firebaseUser;
     private FirebaseAuth m_firebaseAuth;
+
+    System.DateTime timeStamp;
 
     void Awake()
     {
@@ -57,6 +61,7 @@ public class FireUser : MonoBehaviour
             m_firebaseUser = m_firebaseAuth.CurrentUser;
             if (signedIn)
             {
+                timeStamp = System.DateTime.UtcNow;
                 UpdateUser();
             }
         }
@@ -80,10 +85,25 @@ public class FireUser : MonoBehaviour
 
                 Debug.Log(string.Format("User: {0}", documentSnapshot.Id));
 
-                foreach(string key in documentDictionary.Keys)
+                /*foreach(string key in documentDictionary.Keys)
                 {
                     Debug.Log(string.Format("{0}: {1}", key,documentDictionary[key]));
+                }*/
+                //Debug.Log("Before");
+                if (documentDictionary.ContainsKey("completed"))
+                {
+                    //Debug.Log("completed: " + (((IEnumerable<object>)documentDictionary["completed"]).Cast<List<string>>().ToList())[0]);
+                    //Debug.Log("completed: " + ((documentDictionary["completed"] as List<object>)[0] as string));
+                    //unlocks = new List<string>((List<string>)documentDictionary["completed"]);
+                    unlocks.Clear();
+                    for(int i = 0; i < (documentDictionary["completed"] as List<object>).Count; i++)
+                    {
+                        unlocks.Add(((documentDictionary["completed"] as List<object>)[i] as string));
+                    }
                 }
+                
+                foreach(string s in unlocks)
+                    Debug.Log("completed: " + s);
             }
             else
             {
@@ -95,7 +115,6 @@ public class FireUser : MonoBehaviour
 
     private void SetDefaultUserData()
     {
-        System.DateTime timeStamp = System.DateTime.UtcNow;
         Dictionary<string, object> user = new Dictionary<string, object>
         {
             { "last_login", timeStamp },
@@ -104,8 +123,15 @@ public class FireUser : MonoBehaviour
         SetUserData(user);
     }
 
-    public void SaveData() {
-        
+    public void SaveData()
+    {
+        Dictionary<string, object> user = new Dictionary<string, object>
+        {
+            { "completed", unlocks },
+            { "last_login", timeStamp },
+        };
+
+        SetUserData(user);
     }
 
     private void SetUserData(Dictionary<string, object> newUserData)

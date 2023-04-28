@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &493318219888931711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 493318219888931709}
+  - component: {fileID: 493318219888931710}
+  m_Layer: 0
+  m_Name: FireUser
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &493318219888931709
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493318219888931711}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.08195344, y: -1.3543797, z: -0.10691784}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &493318219888931710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493318219888931711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cda34b3d051845c4fbbc9b8516259d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlocks: []
+  exercises:
+  - name: '#1_Sit-ups'
+    tasks:
+    - Task_#1
+    - Task_#2
+    - Task_#3
+    qr_code: http://gfoutdoorfitness.com/video.html?id=UBX-223
+  - name: '#2_Stepper'
+    tasks:
+    - Task_#1
+    - Task_#2
+    qr_code: http://gfoutdoorfitness.com/video.html?id=UBX-292
+  - name: '#3_Pullup_Bar'
+    tasks:
+    - Task_#1
+    - Task_#2
+    - Task_#3
+    - Task_#4
+    qr_code: http://gfoutdoorfitness.com/video.html?id=45s
+  - name: '#4_Leg_Extension_Curl'
+    tasks:
+    - Task_#1
+    - Task_#2
+    - Task_#3
+    qr_code: http://qrs.ly/3w3oxkk
+  - name: '#5_Tricep_Press'
+    tasks:
+    - Task_#1
+    - Task_#2
+    - Task_#3
+    - Task_#4
+    qr_code: http://qrs.ly/173oxjp
+  - name: '#6_Squat'
+    tasks:
+    - Task_#1
+    - Task_#2
+    qr_code: http://qrs.ly/8z3oxii
+  - name: '#7_Chest_Press'
+    tasks:
+    - Task_#1
+    - Task_#2
+    - Task_#3
+    qr_code: http://gfoutdoorfitness.com/video.html?id=UBX-246
+  - name: '#8_Stair_Climber'
+    tasks:
+    - Task_#1
+    - Task_#2
+    qr_code: NoCode
+  - name: '#9_Sit-ups'
+    tasks:
+    - Task_#1
+    - Task_#2
+    - Task_#3
+    qr_code: http://gfoutdoorfitness.com/video.html?id=UBX-223
+  - name: '#10_Recumbent_Bike'
+    tasks:
+    - Task_#1
+    - Task_#2
+    - Task_#3
+    - Task_#4
+    qr_code: http://gfoutdoorfitness.com/video.html?id=GR2005-1-49
+  - name: '#11_Air_Walker'
+    tasks:
+    - Task_#1
+    - Task_#2
+    qr_code: http://qrs.ly/u73gehb
+  - name: '#12_Ski'
+    tasks:
+    - Task_#1
+    - Task_#2
+    qr_code: http://qrs.ly/j33gdsx

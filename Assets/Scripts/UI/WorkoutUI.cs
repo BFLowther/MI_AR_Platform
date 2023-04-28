@@ -51,6 +51,7 @@ public class WorkoutUI : MonoBehaviour
         }
 
         Debug.Log("ttu"+ UnlockManager.Instance.tryingToUnlock);
+        
         for(int i=0; i<exerciseItems.Count; i++)
         {
             Debug.Log("Exercise name tttt"+ exerciseItems[i].ExerciseName + UnlockManager.Instance.tryingToUnlock);
