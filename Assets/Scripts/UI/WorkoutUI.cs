@@ -94,28 +94,49 @@ public class WorkoutUI : MonoBehaviour
             gameObject.transform.parent = goalsParentGO.transform;
 
             gameObject.GetComponent<Goal>().workoutUI = this;
+            gameObject.GetComponent<Goal>().unlockCode = item.exerciseCodeName + "." + item.subtasks[i];
             Debug.Log("subtask: "+ item.exerciseCodeName + "." + item.subtasks[i]);
-            if (FireUser.instance.unlocks.Contains(item.exerciseCodeName + "." + item.subtasks[i]))
-            {
-                gameObject.GetComponent<Goal>().SetUp(item.subtasks[i],true,true, i);
+            if (FireUser.instance.unlocks.Contains(item.exerciseCodeName + "." + item.subtasks[i]))
+
+            {
+
+                gameObject.GetComponent<Goal>().SetUp(item.subtasks[i],true,true, i);
+
             }
-            else
-            {
-                if (i == 0)
-                {
-                    gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], true, false, i);
-                }
-                else
-                {
-                    if(FireUser.instance.unlocks.Contains(item.exerciseCodeName + "." + item.subtasks[i - 1]))
-                    {
-                        gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], true, false, i);
-                    }
-                    else
-                    {
-                        gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], false, false, i);
-                    }
-                }
+            else
+
+            {
+
+                if (i == 0)
+
+                {
+
+                    gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], true, false, i);
+
+                }
+
+                else
+
+                {
+
+                    if(FireUser.instance.unlocks.Contains(item.exerciseCodeName + "." + item.subtasks[i - 1]))
+
+                    {
+
+                        gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], true, false, i);
+
+                    }
+
+                    else
+
+                    {
+
+                        gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], false, false, i);
+
+                    }
+
+                }
+
             }
            /* if (item.GoalSetups[i].isCompleted)
             {
@@ -187,26 +208,39 @@ public class WorkoutUI : MonoBehaviour
         moreInfoPageGO.SetActive(false);
     }
 
-    public void VideoButton()
-    {
-        Application.OpenURL(currentCode);
+    public void VideoButton()
+
+    {
+
+        Application.OpenURL(currentCode);
+
     }
     public void QRScanner()
     {
         SceneManager.LoadScene("QRCodeTest");
     }
 
-    public void OpenMap()
-    {
-        mainMenuGO.SetActive(false);
-        mapGo.SetActive(true);
-
+    public void OpenMap()
+
+    {
+
+        mainMenuGO.SetActive(false);
+
+        mapGo.SetActive(true);
+
+
+
     }
-    public void CloseMap()
-    {
-        mainMenuGO.SetActive(true);
-        mapGo.SetActive(false);
-
+    public void CloseMap()
+
+    {
+
+        mainMenuGO.SetActive(true);
+
+        mapGo.SetActive(false);
+
+
+
     }
 
     /*public void Complete()

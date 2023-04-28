@@ -9,17 +9,17 @@ public class Goal : MonoBehaviour
     private string titleName = "";
     private bool isCompleted = false;
     private bool isReadyToComplete = false;
+    public string unlockCode;
     private int step = 0;
 
     public TMP_Text titleText;
     public GameObject completeButton;
     public Toggle completedToggle;
     public WorkoutUI workoutUI;
-    public ExerciseItem exerciseItem;
 
-    public void SetUp(string name, bool isReady, bool complete, int stepNum)
+    public void SetUp(string _name, bool isReady, bool complete, int stepNum)
     {
-        titleText.text = name.Replace("_"," ");
+        titleText.text = _name.Replace("_"," ");
         step = stepNum;
         isCompleted = complete;
         if (complete)
@@ -43,6 +43,8 @@ public class Goal : MonoBehaviour
     
     public void Complete()
     {
+        FireUser.instance.unlocks.Add(unlockCode);
+        FireUser.instance.SaveData();
         completedToggle.isOn = true;
         completeButton.SetActive(false);
         isCompleted = true;
