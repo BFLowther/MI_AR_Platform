@@ -1843,6 +1843,7 @@ GameObject:
   - component: {fileID: 1513526964}
   - component: {fileID: 1513526963}
   - component: {fileID: 1513526965}
+  - component: {fileID: 1513526966}
   m_Layer: 0
   m_Name: LoginHelper
   m_TagString: Untagged
@@ -1865,9 +1866,9 @@ MonoBehaviour:
   userSignedIn:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1522249066}
-        m_TargetAssemblyTypeName: LoginUI, Assembly-CSharp
-        m_MethodName: LoadMapScene
+      - m_Target: {fileID: 1513526966}
+        m_TargetAssemblyTypeName: SuperPupSystems.Helper.Timer, Assembly-CSharp
+        m_MethodName: StartTimerFromEvent
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1919,6 +1920,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70fdb88a0b437f4b919b5fd9e7d7a84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1513526966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513526962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad54517dc19258185960ef6d2f3a1b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TimeOut:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1522249066}
+        m_TargetAssemblyTypeName: LoginUI, Assembly-CSharp
+        m_MethodName: LoadMapScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  AutoStart: 0
+  AutoRestart: 0
+  CountDownTime: 1
+  timeScale: 1
 --- !u!1 &1522249061
 GameObject:
   m_ObjectHideFlags: 0
