@@ -7,6 +7,7 @@ using TMPro;
 public class ExerciseItem : MonoBehaviour
 {
     public string ExerciseName;
+    public string exerciseCodeName;
     public List<string> subtasks = new List<string>();
     public string QRcode;
 
@@ -67,6 +68,7 @@ public class ExerciseItem : MonoBehaviour
     {
         workoutUI = workoutUIRef;
         ExerciseName = name.Replace("_", " ");
+        exerciseCodeName = name;
         QRcode = code;
         subtasks = tasks;
 

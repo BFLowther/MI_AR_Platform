@@ -94,8 +94,8 @@ public class WorkoutUI : MonoBehaviour
             gameObject.transform.parent = goalsParentGO.transform;
 
             gameObject.GetComponent<Goal>().workoutUI = this;
-
-            if (FireUser.instance.unlocks.Contains(item.name + "." + item.subtasks[i]))
+            Debug.Log("subtask: "+ item.exerciseCodeName + "." + item.subtasks[i]);
+            if (FireUser.instance.unlocks.Contains(item.exerciseCodeName + "." + item.subtasks[i]))
             {
                 gameObject.GetComponent<Goal>().SetUp(item.subtasks[i],true,true, i);
             }
@@ -107,13 +107,13 @@ public class WorkoutUI : MonoBehaviour
                 }
                 else
                 {
-                    if(FireUser.instance.unlocks.Contains(item.name + "." + item.subtasks[i - 1]))
+                    if(FireUser.instance.unlocks.Contains(item.exerciseCodeName + "." + item.subtasks[i - 1]))
                     {
                         gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], true, false, i);
                     }
                     else
                     {
-                        gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], true, false, i);
+                        gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], false, false, i);
                     }
                 }
             }

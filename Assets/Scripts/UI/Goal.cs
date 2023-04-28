@@ -22,7 +22,6 @@ public class Goal : MonoBehaviour
         titleText.text = name.Replace("_"," ");
         step = stepNum;
         isCompleted = complete;
-
         if (complete)
         {
             completeButton.SetActive(false);
