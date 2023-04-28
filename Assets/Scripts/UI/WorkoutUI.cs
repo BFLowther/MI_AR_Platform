@@ -27,6 +27,10 @@ public class WorkoutUI : MonoBehaviour
     public GameObject goalsGO;
     public GameObject goalsParentGO;
     private ExerciseItem curItem;
+    private string currentCode;
+
+    public GameObject mainMenuGO;
+    public GameObject mapGo;
     
 
     private void Start()
@@ -71,26 +75,19 @@ public class WorkoutUI : MonoBehaviour
         }
     }
 
-    public void QRScanner()
-    {
-        if(UnlockManager.Instance != null)
-            UnlockManager.Instance.CancelUnlock();
-        
-        SceneManager.LoadScene("QRCodeTest");
-    }
-/*
-    public void MoreInfoPage(string title, string info, ExerciseItem item)
+    
+
+    public void MoreInfoPage(string title, string code, ExerciseItem item)
     {
         titleText.text = title;
-        infoText.text = info;
-
+        currentCode = code;
         for(int i = 0; i<goalsParentGO.transform.childCount; i++)
         {
             Destroy(goalsParentGO.transform.GetChild(i).gameObject);
         }
 
         GameObject gameObject;
-        for(int i = 0; i<item.GoalSetups.Count; i++)
+        for(int i = 0; i<item.subtasks.Count; i++)
         {
             gameObject = Instantiate(goalsGO);
             gameObject.SetActive(false);
@@ -98,7 +95,29 @@ public class WorkoutUI : MonoBehaviour
 
             gameObject.GetComponent<Goal>().workoutUI = this;
 
-            if (item.GoalSetups[i].isCompleted)
+            if (FireUser.instance.unlocks.Contains(item.name + "." + item.subtasks[i]))
+            {
+                gameObject.GetComponent<Goal>().SetUp(item.subtasks[i],true,true, i);
+            }
+            else
+            {
+                if (i == 0)
+                {
+                    gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], true, false, i);
+                }
+                else
+                {
+                    if(FireUser.instance.unlocks.Contains(item.name + "." + item.subtasks[i - 1]))
+                    {
+                        gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], true, false, i);
+                    }
+                    else
+                    {
+                        gameObject.GetComponent<Goal>().SetUp(item.subtasks[i], true, false, i);
+                    }
+                }
+            }
+           /* if (item.GoalSetups[i].isCompleted)
             {
                 gameObject.GetComponent<Goal>().exerciseItem = item;
                 gameObject.GetComponent<Goal>().SetUp();
@@ -126,14 +145,14 @@ public class WorkoutUI : MonoBehaviour
                         gameObject.GetComponent<Goal>().SetUp();
                     }
                 }
-            }
+            }*/
 
             gameObject.SetActive(true);
         }
         
         moreInfoPageGO.SetActive(true);
     }
-
+/*
     public void RefreshMorePage()
     {
         GameObject[] gameObjects = new GameObject[goalsParentGO.transform.childCount];
@@ -166,6 +185,28 @@ public class WorkoutUI : MonoBehaviour
     {
         Refresh();
         moreInfoPageGO.SetActive(false);
+    }
+
+    public void VideoButton()
+    {
+        Application.OpenURL(currentCode);
+    }
+    public void QRScanner()
+    {
+        SceneManager.LoadScene("QRCodeTest");
+    }
+
+    public void OpenMap()
+    {
+        mainMenuGO.SetActive(false);
+        mapGo.SetActive(true);
+
+    }
+    public void CloseMap()
+    {
+        mainMenuGO.SetActive(true);
+        mapGo.SetActive(false);
+
     }
 
     /*public void Complete()

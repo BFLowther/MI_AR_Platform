@@ -6,25 +6,31 @@ using TMPro;
 
 public class Goal : MonoBehaviour
 {
-    /*[HideInInspector]
-    public int step = 0;
+    private string titleName = "";
+    private bool isCompleted = false;
+    private bool isReadyToComplete = false;
+    private int step = 0;
+
     public TMP_Text titleText;
     public GameObject completeButton;
     public Toggle completedToggle;
     public WorkoutUI workoutUI;
     public ExerciseItem exerciseItem;
 
-    public void SetUp()
+    public void SetUp(string name, bool isReady, bool complete, int stepNum)
     {
-        titleText.text = exerciseItem.GoalSetups[step].titleName;
-        if (exerciseItem.GoalSetups[step].isCompleted)
+        titleText.text = name.Replace("_"," ");
+        step = stepNum;
+        isCompleted = complete;
+
+        if (complete)
         {
             completeButton.SetActive(false);
             completedToggle.isOn = true;
         }
         else
         {
-            if (exerciseItem.GoalSetups[step].isReadyToComplete)
+            if (isReady)
             {
                 completeButton.SetActive(true);
             }
@@ -35,11 +41,12 @@ public class Goal : MonoBehaviour
         }
         
     }
+    
     public void Complete()
     {
         completedToggle.isOn = true;
         completeButton.SetActive(false);
-        exerciseItem.GoalSetups[step].isCompleted = true;
-        workoutUI.RefreshMorePage();
-    }*/
+        isCompleted = true;
+        //workoutUI.RefreshMorePage();
+    }
 }
